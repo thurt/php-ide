@@ -42,16 +42,16 @@ RUN cd /usr/local/include && \
 
 #INSTALL phpbrew
 #INSTALL php
-RUN mkdir -p ${PHPBREW_DIR} && \
-    curl -L https://github.com/phpbrew/phpbrew/archive/${PHPBREW_VERSION}.tar.gz | \
-    tar -C ${PHPBREW_DIR} -zx phpbrew-${PHPBREW_VERSION}/phpbrew --strip=1 && \
-    chmod +x ${PHPBREW_DIR}/phpbrew && \
-    ${PHPBREW_DIR}/phpbrew init --root=${PHPBREW_DIR} && \
-    ${PHPBREW_DIR}/phpbrew update 
+RUN mkdir -p "$PHPBREW_DIR" && \
+    curl -L https://github.com/phpbrew/phpbrew/archive/"$PHPBREW_VERSION".tar.gz | \
+    tar -C "$PHPBREW_DIR" -zx phpbrew-"$PHPBREW_VERSION"/phpbrew --strip=1 && \
+    chmod +x "$PHPBREW_DIR"/phpbrew && \
+    "$PHPBREW_DIR"/phpbrew init --root="$PHPBREW_DIR" && \
+    "$PHPBREW_DIR"/phpbrew update 
 
 # INSTALL composer
 RUN mkdir -p /home/user/php/src/composer && \
-    wget https://raw.githubusercontent.com/composer/getcomposer.org/${COMPOSER_VERSION}/web/installer -O - -q | \
+    wget https://raw.githubusercontent.com/composer/getcomposer.org/"$COMPOSER_VERSION"/web/installer -O - -q | \
     php -- --quiet --install-dir=/home/user/php/src/composer
 
 # INSTALL php-cs-fixer
