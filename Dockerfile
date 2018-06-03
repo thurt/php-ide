@@ -34,8 +34,8 @@ RUN sudo apt-get update && \
         libxslt1-dev \
         zlib1g-dev \
         && \
-        apt-get clean && \
-        rm -rf /var/lib/apt/lists/*
+        sudo apt-get clean && \
+        sudo rm -rf /var/lib/apt/lists/*
 
 RUN cd /usr/local/include && \
     sudo ln -s /usr/include/x86_64-linux-gnu/curl curl && \
