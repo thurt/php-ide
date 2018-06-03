@@ -3,8 +3,8 @@ FROM gcr.io/learned-stone-189802/base-ide:latest
 ENV \
     PHPBREW_VERSION=1.23.1 \
     PHPBREW_ROOT=/home/user/php/src/.phpbrew \
-    PHPBREW_HOME=$PHPBREW_ROOT \
-    PATH="$PHPBREW_ROOT:/home/user/php/src/composer:$PATH" \
+    PHPBREW_HOME=/home/user/php/src/.phpbrew \
+    PATH="/home/user/php/src/.phpbrew:/home/user/php/src/composer:$PATH" \
     COMPOSER_VERSION=fe44bd5b10b89fbe7e7fc70e99e5d1a344a683dd
 
 # INSTALL 
