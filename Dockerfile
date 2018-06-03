@@ -8,7 +8,7 @@ ENV \
 
 # INSTALL 
 RUN sudo apt-get update && \
-    sudo apt-get -qq install -y \
+    sudo apt-get -qq install --no-install-recommends -y \
         wget \
         php7.0 \
         php7.0-curl \
@@ -31,7 +31,10 @@ RUN sudo apt-get update && \
         libmhash-dev \
         libmhash2 \
         libxslt1-dev \
-        zlib1g-dev
+        zlib1g-dev \
+        && \
+        apt-get clean && \
+        rm -rf /var/lib/apt/lists/*
 
 RUN cd /usr/local/include && \
     sudo ln -s /usr/include/x86_64-linux-gnu/curl curl && \
