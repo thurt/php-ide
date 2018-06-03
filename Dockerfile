@@ -1,9 +1,9 @@
 FROM gcr.io/learned-stone-189802/base-ide:latest
 
 ENV \
-    PATH="/home/user/php/src/composer:${PATH}" \
     PHPBREW_VERSION=1.23.1 \
-    PHPBREW_DIR=/home/user/php/src/.phpbrew \
+    PHPBREW_ROOT=/home/user/php/src/.phpbrew \
+    PATH="$PHPBREW_ROOT:/home/user/php/src/composer:$PATH" \
     COMPOSER_VERSION=fe44bd5b10b89fbe7e7fc70e99e5d1a344a683dd
 
 # INSTALL 
@@ -42,12 +42,12 @@ RUN cd /usr/local/include && \
 
 #INSTALL phpbrew
 #INSTALL php
-RUN mkdir -p "$PHPBREW_DIR" && \
+RUN mkdir -p "$PHPBREW_ROOT" && \
     curl -L https://github.com/phpbrew/phpbrew/archive/"$PHPBREW_VERSION".tar.gz | \
-    tar -C "$PHPBREW_DIR" -zx phpbrew-"$PHPBREW_VERSION"/phpbrew --strip=1 && \
-    chmod +x "$PHPBREW_DIR"/phpbrew && \
-    "$PHPBREW_DIR"/phpbrew init --root="$PHPBREW_DIR" && \
-    "$PHPBREW_DIR"/phpbrew update 
+    tar -C "$PHPBREW_ROOT" -zx phpbrew-"$PHPBREW_VERSION"/phpbrew --strip=1 && \
+    chmod +x "$PHPBREW_ROOT"/phpbrew && \
+    "$PHPBREW_ROOT"/phpbrew init --root="$PHPBREW_ROOT" && \
+    "$PHPBREW_ROOT"/phpbrew update 
 
 # INSTALL composer
 RUN mkdir -p /home/user/php/src/composer && \
