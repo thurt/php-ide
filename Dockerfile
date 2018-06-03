@@ -21,19 +21,16 @@ RUN sudo apt-get update && \
         libxml2-dev \
         libcurl4-openssl-dev \
         libssl-dev \
-        openssl \
         gettext \
         libicu-dev \
         libmcrypt-dev \
         libmcrypt4 \
         libbz2-dev \
         libreadline-dev \
-        build-essential \
         libmhash-dev \
         libmhash2 \
         libxslt1-dev \
         zlib1g-dev \
-        libcurl4-gnutls-dev \
         && \
         sudo apt-get clean && \
         sudo rm -rf /var/lib/apt/lists/*
