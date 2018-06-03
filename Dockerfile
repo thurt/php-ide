@@ -33,13 +33,12 @@ RUN sudo apt-get update && \
         libmhash2 \
         libxslt1-dev \
         zlib1g-dev \
+        libcurl4-gnutls-dev \
         && \
         sudo apt-get clean && \
         sudo rm -rf /var/lib/apt/lists/*
 
-RUN cd /usr/local/include && \
-    sudo ln -s /usr/include/x86_64-linux-gnu/curl curl && \
-    sudo apt-get install -qq -y libcurl4-gnutls-dev
+RUN sudo ln -s /usr/include/x86_64-linux-gnu/curl /usr/local/include/curl
 
 #INSTALL phpbrew
 #INSTALL php
