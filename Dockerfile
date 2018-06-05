@@ -4,6 +4,7 @@ ENV \
     PHPBREW_VERSION=1.23.1 \
     PHPBREW_ROOT=/home/user/php/src/.phpbrew \
     PHPBREW_HOME=/home/user/php/src/.phpbrew \
+    COMPOSER_HOME=/home/user/php/src/composer \
     PATH="/home/user/php/src/.phpbrew:/home/user/php/src/composer:$PATH" \
     COMPOSER_VERSION=fe44bd5b10b89fbe7e7fc70e99e5d1a344a683dd
 
@@ -44,7 +45,7 @@ RUN mkdir -p "$PHPBREW_ROOT" && \
     tar -C "$PHPBREW_ROOT" -zx phpbrew-"$PHPBREW_VERSION"/phpbrew --strip=1 && \
     chmod +x "$PHPBREW_ROOT"/phpbrew && \
     "$PHPBREW_ROOT"/phpbrew init --root="$PHPBREW_ROOT" && \
-    "$PHPBREW_ROOT"/phpbrew update 
+    "$PHPBREW_ROOT"/phpbrew update
 
 # INSTALL composer
 RUN mkdir -p /home/user/php/src/composer && \
