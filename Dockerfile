@@ -56,12 +56,15 @@ RUN mkdir -p /home/user/php/src/composer && \
 #RUN /home/user/php/src/composer/composer global require friendsofphp/php-cs-fixer
  
 #INSTALL vim plugins: 
-# php.vim (syntax highlighting)
-# vim-php-cs-fixer (auto-fixing issues/formatting whitespace)
-# phpcomplete.vim (omni-completion)
-RUN git clone https://github.com/StanAngeloff/php.vim.git ~/.vim/bundle/php.vim && \
+RUN \
+    # php.vim (syntax highlighting)
+    git clone https://github.com/StanAngeloff/php.vim.git ~/.vim/bundle/php.vim && \
+    # vim-php-cs-fixer (auto-fixing issues/formatting whitespace)
     git clone https://github.com/stephpy/vim-php-cs-fixer.git ~/.vim/bundle/vim-php-cs-fixer && \ 
-    git clone https://github.com/shawncplus/phpcomplete.vim.git ~/.vim/bundle/phpcomplete.vim.git && \
+    # phpcomplete.vim (omni-completion)
+    git clone https://github.com/shawncplus/phpcomplete.vim.git ~/.vim/bundle/phpcomplete.vim && \
+    # vim-blade - syntax highlighting for blade templates (laravel 4+)
+    git clone https://github.com/jwalton512/vim-blade.git ~/.vim/bundle/vim-blade && \
     #SETUP YCM
     cd /home/user/.vim/bundle/YouCompleteMe && \
     ./install.py 
